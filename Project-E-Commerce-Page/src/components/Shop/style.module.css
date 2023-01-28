@@ -1,0 +1,18 @@
+.shopContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.shopCarts {
+    display: flex;
+    flex-direction: row;
+}
+
+@media only screen and (max-width: 700px) {
+    .shopCarts {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+}

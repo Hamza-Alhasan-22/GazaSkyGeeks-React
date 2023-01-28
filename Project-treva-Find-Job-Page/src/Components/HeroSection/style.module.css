@@ -1,0 +1,133 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+}
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.title h2{
+    font-size: 40px;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.body{
+    display: flex;
+    position: relative;
+}
+.description{
+    display: flex;
+    flex-direction: column;
+    width: 52%;
+    margin-left: 8.33%;
+    margin-top: 178.5px;
+    position: absolute;
+}
+.descriptionBody{
+    padding: 49px 17.22% 102px 7.48%;
+    z-index: 2;
+}
+.descriptionBody h3,.descriptionBody2 h3{
+    font-size: 26px;
+    color: #FFFFFF;
+    z-index: 2;
+}
+.descriptionBody p,.descriptionBody2 p{
+    font-size: 18px;
+    color: #FFFFFF;
+    z-index: 2;
+    line-height: 30px;
+}
+.sideImage{
+    margin-left: 52.8%;
+    margin-top: 128.12px;
+    z-index: -1;
+    overflow-x: hidden;
+}
+.sideImage img{
+    width: 62.87vw;
+    height: auto;
+}
+.icon{  
+    border-radius: 200px;
+    align-self: center;
+    width: 3.26vw;
+    height: 3.26vw;
+    /* width: 47px; */
+    /* height: 47px; */
+    margin-right: 9%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
+}
+/* ///////////////// */
+.body2{
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+}
+.description2{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 48.95%;
+    height: 522.7px;
+    margin: 252.95px 92px 0 643.17px;
+}
+.descriptionBody2{
+    padding: 143px 48px 0 118px;
+    z-index: 2;
+}
+.sideImage2{
+    /* margin-right: 58.75%; */
+    margin-right: 53.75%;
+    margin-top: 144.65px;
+    z-index: -1;
+    overflow-x: hidden;
+}
+.sideImage2 img{
+    width: 46.39vw;
+    height: auto;
+}
+.p2{
+    overflow: hidden;
+    height: 47%;
+}
+@media only screen and (max-width: 1000px) {
+    .body,.body2{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .description,.description2{
+        width: 82%;
+        position: static;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .sideImage,.sideImage2{
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: -4%;
+        justify-content: center;
+        align-items: center;
+    }
+    .buttons{
+        width: 100%;
+    }
+    .descriptionBody h3,.descriptionBody2 h3{
+        font-size: 18px;
+    }
+    .descriptionBody p,.descriptionBody2 p{
+        font-size: 14px;
+        line-height: 20px;
+    }
+}

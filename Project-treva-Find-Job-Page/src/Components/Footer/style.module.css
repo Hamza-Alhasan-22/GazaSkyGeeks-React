@@ -1,0 +1,44 @@
+.mainWrapper{
+    padding: 0 120px;
+    padding-top:100px;
+    border-top: 1px solid whitesmoke;
+    margin-top:100px;
+    margin-bottom:200px;
+}
+
+.flexContainer{
+    display: flex;
+    height:35vh;
+}
+.flexContainer div:first-of-type{
+    width:50%;
+    /* height:35vh; */
+    background-image:url('../../assets/Group420.png');
+}
+.flexContainer div:last-of-type{
+    width:61%;
+    position: relative;
+    /* right:80px; */
+    /* height:35vh; */
+    background-image: url('../../assets//Group386.png');
+}
+.flexContainer img{
+    width:720px;
+}
+.containerAbout{
+    display: flex;
+    justify-content: space-between;
+}
+.containerAbout span{
+    font-size:20px;
+    margin-bottom:20px;
+}
+.containerAbout li{
+    list-style-type: none;
+}
+.containerAbout ul{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    
+}

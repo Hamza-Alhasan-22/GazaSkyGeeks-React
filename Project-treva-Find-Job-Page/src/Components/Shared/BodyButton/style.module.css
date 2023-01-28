@@ -1,0 +1,21 @@
+.myButton{
+    background-color: white;
+    border: none;
+    border-bottom: 1px solid gray;
+    font-size: 22px;
+    width: 19%;
+    display: flex;
+    justify-content: center;
+    height: 80.5px;
+}
+.myButton:hover{
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .myButton{
+        width: 30%;
+    }
+}

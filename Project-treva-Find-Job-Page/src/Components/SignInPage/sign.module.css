@@ -1,0 +1,154 @@
+.SignContainer {
+  display: flex;
+  flex-direction: row;
+  width: 1112px;
+  height: 686px;
+}
+.backgroundSign {
+  width: 694.5px;
+  height: 100%;
+  position: relative;
+}
+.backgroundSign img {
+  width: 100%;
+  height: 100%;
+}
+
+.SignDescContainer {
+  width: 417.5px;
+}
+
+.firstHalf {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* align-items: center; */
+  height: 323px;
+}
+
+.SignInLogo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 92px;
+  align-items: center;
+  margin: 0px 0px 0px 20px;
+}
+.SignInLogo img {
+  width: 91px;
+  height: 91px;
+}
+.SignInLogo h5 {
+  /* text-align: center; */
+}
+
+.SignInpara p {
+  color: #59626a;
+  font-size: 14px;
+  width: 316;
+  height: 46px;
+  margin: 0px 0px 0px 30px;
+}
+
+.SignInlink {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #168eea;
+  font-size: 14px;
+  cursor: pointer;
+  width: 301px;
+  margin: 0px 0px 0px 25px;
+  transition: all 0.3s ease-in-out;
+}
+.SignInlink:hover {
+  color: #0f6db8;
+}
+
+.SignInlink a {
+  text-decoration: underline;
+}
+
+.secondHalf {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 363px;
+  background-color: #f5f6f7;
+}
+
+.passwordtext {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+h6 {
+  font-size: 14px;
+  color: #262626;
+  font-weight: 400;
+}
+
+.passwordForget a {
+  color: #168eea;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.passwordForget:hover {
+  color: #0f6db8;
+}
+
+.emailA {
+  width: 316px;
+  height: 48px;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  padding: 0px 0px 0px 10px;
+  font-size: 14px;
+  /* color: #262626; */
+}
+
+.password {
+  width: 316px;
+  height: 48px;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  padding: 0px 0px 0px 10px;
+  font-size: 14px;
+  /* transition: all 0.3s ease-in-out; */
+  /* color: #786AFF; */
+}
+
+.formSignInButton {
+  width: 316px;
+  height: 48px;
+  border: none;
+  border-radius: 5px;
+  background-color: #168eea;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-top: 20px;
+}
+.formSignInButton:hover {
+  background-color: #f5f6f7;
+  border: 1px solid #0f6db8;
+  color: #0f6db8;
+}
+
+.SignUpnotHaveAccount {
+  display: flex;
+  width: 236px;
+  height: 19px;
+  font-size: 14px;
+  color: #59626a;
+}
+.SignUpnotHaveAccount a {
+  color: #168eea;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}

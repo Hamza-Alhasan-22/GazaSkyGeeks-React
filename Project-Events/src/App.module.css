@@ -1,0 +1,111 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.header {
+  height: 80px;
+  margin-left: 2.6vw;
+  margin-right: 2.6vw;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 38px 38px 0 0;
+  background-color: white;
+}
+
+.body {
+  z-index: 1;
+  background-color: white;
+  margin-left: 2.6vw;
+  margin-right: 2.6vw;
+  border-radius: 0 0 38px 38px;
+}
+
+#headerBack {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  z-index: -9;
+  background-color: #37B2B6;
+}
+
+.headerLeft {
+  display: flex;
+  margin-left: 3vw;
+}
+
+.headerRight {
+  margin-right: 3vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+#icon {
+  width: 7.68vw;
+  height: auto;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  margin-bottom: 50px;
+}
+
+.filters {
+  margin-left: 2.8vw;
+  margin-right: 2.8vw;
+}
+
+#createEvent {
+  background-color: #F12711;
+  margin-right: 0;
+  padding-left: 1vw;
+  padding-right: 2vw;
+  height: 38px;
+  display: flex;
+  align-items: center;
+}
+
+#createEvent:hover{
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.apply {
+  background-color: #F12711;
+  color: white;
+  margin-left: 2.8vw;
+  margin-right: 2.8vw;
+  margin-top: 30%;
+  height: 40px;
+}
+
+.headerLeft span {
+  margin-left: 4vw;
+}
+
+.headerRight span {
+  margin-right: 2vw;
+}
+
+.lifeSaver {
+  background-color: white;
+  border: 1px solid gray;
+  height: 38px;
+  width: 38px;
+}
+
+.loginButton {
+  background-color: white;
+  border: 1px solid gray;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  display: flex;
+  align-items: center;
+  height: 38px;
+}

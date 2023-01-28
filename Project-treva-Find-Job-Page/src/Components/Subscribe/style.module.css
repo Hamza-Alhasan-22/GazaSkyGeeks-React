@@ -1,0 +1,40 @@
+.mainWrapper{
+    padding: 0 120px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.centerContent{
+    text-align: center;
+    line-height: 2;
+    font-size:30px;
+}
+.subscribeInfo{
+    margin:auto;
+    width:30%;
+    margin-bottom:40px;
+}
+
+.mainWrapper input[type='text']{
+    height: 50px; 
+    width:40%;
+    background-color:#D8D8D8;
+}
+.mainWrapper button{
+    width:200px;
+    height:57px;
+    position: relative;
+    right:10px;
+    color:white;
+    background-color:#130242;
+    font-size:20px;
+}
+.mainWrapper span{
+    margin-right:10px;
+}
+.flexCenter{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
