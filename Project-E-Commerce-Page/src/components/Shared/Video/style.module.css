@@ -37,10 +37,47 @@
     padding-left: 7%;
 }
 
+.videoDiv{
+    display: flex;
+    flex-direction: column;
+    z-index: 5;
+    position: relative;
+}
+.videoDiv span{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(51, 51, 58);
+}
+.videoDiv span p{
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+.fatimes{
+    position: absolute;
+    right: 0;
+    width: 10%;
+    color: white;
+}
+.fatimes:hover{
+    cursor: pointer;
+}
+
+.videoWrapper{
+    width: 80vw;
+    height: 40vw;
+}
+
 @media only screen and (max-width: 700px) {
     .video {
         flex: 0 0 auto;
         max-width: 80%;
         height: auto;
+    }
+    .videoWrapper{
+        width: 80vw;
+        height: 50vw;
     }
 }

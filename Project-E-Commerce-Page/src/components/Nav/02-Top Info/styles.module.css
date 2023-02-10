@@ -28,6 +28,7 @@
     opacity: 1;
     background-color: rgba(51, 51, 58, 1);
     width: 100vw;
+    position: relative;
 }
 
 .navContainer button {
@@ -44,6 +45,7 @@
     text-transform: uppercase;
     height: 40px;
     width: 11.53vw;
+    margin-left: 2vw;
 }
 
 .navContainer input {
@@ -62,7 +64,7 @@
     height: 40px;
     width: 25vw;
     margin-left: 3.47vw;
-    margin-right: 2vw;
+    /* margin-right: 2vw; */
 }
 
 .navContainer p {
@@ -81,10 +83,11 @@
     .navContainer button{
         width: 25vw;
         margin-right: 8vw;
+        margin-left: 1vw;
     }
     .navContainer input{
         margin-left: 1vw;
-        margin-right: 1vw;
+        /* margin-right: 1vw; */
     }
 }
 

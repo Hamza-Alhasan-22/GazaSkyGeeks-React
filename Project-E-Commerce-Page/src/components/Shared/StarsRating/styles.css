@@ -1,0 +1,30 @@
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + i {
+  display: inline-block;
+  font-size: 1.5em;
+  color: #e4e5e9;
+  cursor: pointer;
+}
+
+input[type="radio"] + i > span {
+  display: none;
+}
+
+input[type="radio"] + i > .outline-star {
+  display: inline-block;
+}
+
+input[type="radio"]:checked + i > .outline-star {
+  display: none;
+}
+
+input[type="radio"]:checked + i > .solid-star {
+  display: inline-block;
+}
+
+i span:hover {
+  color: #ffc107;
+}

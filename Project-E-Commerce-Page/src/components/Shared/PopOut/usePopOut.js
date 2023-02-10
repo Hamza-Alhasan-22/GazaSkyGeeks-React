@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { NavBar } from '../../../App.js'
 
-const usePopOut = ({props}) => {
+const usePopOut = ({ props }) => {
     const { cards, closeState, favList } = useContext(NavBar);
     const [cardsArry, setCardsArry] = cards;
     const [close, setClose] = closeState;
@@ -18,7 +18,7 @@ const usePopOut = ({props}) => {
         ary.push({
             id: props.id,
             title: props.title,
-            price: props.data.price,
+            price: parseFloat(props.data.price.slice(1)),
             image: props.sideImgs,
             quantity: quantity,
         });
@@ -33,12 +33,15 @@ const usePopOut = ({props}) => {
         setC(quantity);
         setClose(false);
         const ary3 = [...favArryProducts];
-        ary3.push({
-            id: props.id,
-            title: props.title,
-            price: props.data.price,
-            image: props.sideImgs,
-        });
+        if (ary3.find(item => item.id === props.id) == undefined) {
+            ary3.push({
+                id: props.id,
+                title: props.title,
+                price: parseFloat(props.data.price.slice(1)),
+                //price: props.data.price,
+                image: props.sideImgs,
+            });
+        }
         setFavArryProducts(ary3);
     }
 
@@ -73,7 +76,7 @@ const usePopOut = ({props}) => {
     const handleClicked = () => {
         setClicked(!clicked);
     };
-    console.log({cardsArry});
+    console.log({ cardsArry });
     return {
         handleClicked,
         handleMainImage,

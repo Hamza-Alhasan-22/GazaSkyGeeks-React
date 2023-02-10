@@ -4,14 +4,12 @@
     height: 600px;
     position: relative;
     background-color: rgb(243, 243, 243);
-    /* margin-top: 250px; */
 }
 
 .container span {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin: 0; */
 }
 
 .header{
@@ -22,15 +20,19 @@
 .container img {
     position: absolute;
     height: 100%;
-    width: auto;
-    /* margin-left: 62.8472vw; */
-    right: 9.38vw;
+    display: flex;
+    align-self: center;
+    width: 79vw;
     z-index: 2;
 }
 
 .container h1 {
     opacity: 1;
     color: rgba(51, 51, 58, 1);
+
+    color: white;
+    /* background-color: rgb(51, 51, 58); */
+
     font-family: "VLNewParisHeadline";
     font-size: 60px;
     font-weight: 400;
@@ -41,11 +43,16 @@
     z-index: 3;
     height: 90px;
     margin: 0;
+    text-shadow: 1.6px 1px white;
 }
 
 .container p {
     opacity: 1;
     color: rgba(3, 3, 3, 1);
+
+    color: white;
+    /* background-color: rgb(51, 51, 58); */
+
     font-family: "ProximaNova-Light";
     font-size: 18px;
     font-weight: 300;
@@ -62,18 +69,18 @@
 
 @media only screen and (max-width: 700px) {
     .container{
-        height: 52vh;
+        height: 45vh;
     }
     .container img {
         /* margin-left: 36vw; */
-        height: 50vh;
-        width: auto;
-        right: 0;
-        top: 4%;
+        /* height: auto; */
+        /* width: auto; */
+        /* right: 0; */
+        /* top: 4%; */
     }
     .container span{
-        justify-content: flex-start;
-        margin-left: 10.4%;
+        /* justify-content: flex-start; */
+        /* margin-left: 10.4%; */
         margin-top: 8%;
     }
     .container h1{
@@ -84,5 +91,8 @@
     }
     .container p{
         width: 50%;
+    }
+    .header{
+        margin-top: 5em !important;
     }
 }

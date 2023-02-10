@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './style.module.css'
 import FooterData from './FooterData';
 import { IconContext } from "react-icons";
 import { RiFacebookCircleFill } from 'react-icons/ri';
 import { AiFillTwitterCircle } from 'react-icons/ai';
+import EmailInput from '../Shared/EmailInput';
+import AlertState from '../Shared/Alert';
 
 function Footer(props) {
+    const [error, setError] = useState(null);
+    
     const footerdata = [
         {
             title: 'Categories',
@@ -41,8 +45,10 @@ function Footer(props) {
                 <div className={styles.subscribe}>
                     <h2>Subscribe to newsletter</h2>
                     <div className={styles.subscribeContent}>
-                        <input></input>
-                        <button>Subscribe</button>
+                        <EmailInput containerWidth={'64.7%'} success={[error, setError]}/>
+                        <AlertState state={[error, setError]} numOfSec={3}>
+                            <button>Subscribe</button>
+                        </AlertState>
                     </div>
                     <div className={styles.subscribeLogo}>
                         <IconContext.Provider 

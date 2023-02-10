@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import NewTag from '../NewTag';
 import styles from './style.module.css'
 import Popup from 'reactjs-popup';
@@ -17,6 +17,17 @@ function Card(props) {
 
     const [isModalOpen, setisModalOpen] = useState(false);
 
+    useEffect(() => {
+        if (isModalOpen) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = 'visible';
+        }
+        return () => {
+          document.body.style.overflow = 'visible';
+        };
+      }, [isModalOpen]);
+
     const openModal = () => {
         setisModalOpen(true);
     }
@@ -24,7 +35,6 @@ function Card(props) {
     const closeModal = () => {
         setisModalOpen(false);
     }
-
 
     return (
         <div className={styles.card}>

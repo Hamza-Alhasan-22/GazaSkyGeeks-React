@@ -1,27 +1,31 @@
-import React, {createContext, useContext} from 'react';
+import React, {useEffect} from 'react';
 import styles from '../App.module.css';
 import Global from '../components/Nav/01-Global';
 import Footer from '../components/Footer';
 import HeaderImg from '../components/HeaderImg';
 import TopInfo from '../components/Nav/02-Top Info';
-import headerImg from '../images/8402c0f4f134ac3da6567d064219651be69fb559.png';
 import ProductListing from '../components/ProductListing';
+import {productPageInfo} from '../components/ProductListing/data.js'
 
-function ProductPage(props) {
-    const headerImgData = {
-        title: 'Apparels',
-        description: 'White Gold began gaining popularity in the early 1900’s as an alternative to platinum.',
-        img: headerImg
-      };
+function ProductPage({pageState}) {
+    const [pageId, setPageId] = pageState;
+    useEffect(() => {
+        window.scrollTo(
+          {
+            top: 0,
+            behavior: 'smooth',
+          }
+        )
+      }, [pageId]);
     return (
         <>
             <div className={styles.headerContainer}>
                 <TopInfo />
                 <Global />
             </div>
-            <HeaderImg title={headerImgData.title} description={headerImgData.description} img={headerImgData.img} />
+            <HeaderImg title={productPageInfo[pageId].title} description={productPageInfo[pageId].description} img={productPageInfo[pageId].wallpaper} />
             <div className={styles.mainContainer}>
-                <ProductListing />
+                <ProductListing pageState={pageState} />
             </div>
             <div className={styles.footerContainer}>
                 <Footer />

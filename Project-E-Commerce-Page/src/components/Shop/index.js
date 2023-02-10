@@ -2,7 +2,7 @@ import React from 'react';
 import SectionTitle from '../Shared/SectionTitle';
 import ShopCart from '../Shared/ShopCart';
 import styles from './style.module.css'
-import {products} from './shopData.js'
+import {shopOptions} from './shopData.js'
 
 function Shop(props) {
     return (
@@ -10,7 +10,7 @@ function Shop(props) {
             <SectionTitle title='Shop'/>
             <div className={styles.shopCarts}>
                  {
-                    products.map(item=>{
+                    shopOptions.map((item,index)=>{
                         return(
                             <ShopCart {...item}/>
                         )

@@ -1,27 +1,27 @@
-import shopCart1 from '../../images/shopCart1.png'
-import shopCart2 from '../../images/shopCart2.png'
-import shopCart3 from '../../images/shopCart3.png'
-import shopCart4 from '../../images/shopCart4.png'
+import apparelsShop from '../../products/Apparels/apparels-shop.jpg'
+import accessoriesShop from '../../products/Accessories/accessories-shop.jpg'
+import houseware from '../../products/Houseware/houseware-shop.jpg'
+import othersShop from '../../products/Others/others-shop.jpg'
 
-export const products = [
+export const shopOptions = [
+    {
+        id: '0',
+        image: apparelsShop,
+        description: 'Apparels'
+    },
     {
         id: '1',
-        image: shopCart1,
-        description: 'Pants'
+        image: accessoriesShop,
+        description: 'Accessories'
     },
     {
         id: '2',
-        image: shopCart2,
-        description: 'Jumpsuits'
+        image: houseware,
+        description: 'HouseWare'
     },
     {
         id: '3',
-        image: shopCart3,
-        description: 'Tops'
-    },
-    {
-        id: '4',
-        image: shopCart4,
-        description: 'Accessories'
+        image: othersShop,
+        description: 'Other'
     }
 ];

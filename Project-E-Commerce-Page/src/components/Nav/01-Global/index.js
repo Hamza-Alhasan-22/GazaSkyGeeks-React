@@ -28,10 +28,10 @@ function Global() {
     const headerTitle = (header) => {
         return(
             <div className={styles.titleButton}>
-                <button className={showOptions[header.id-1] ? `${styles.titleButtonTxt} ${styles.redActive}`:styles.titleButtonTxt}
+                <button className={showOptions[header.id-1] ? `${styles.titleButtonTxt} ${styles.redActive} ${styles.activeOption}`:styles.titleButtonTxt}
                 onClick={() => handleShowOptions(header.id-1)}>{header.title}{showOptions[header.id-1] ? arrow('up'):arrow('down')}</button>
                 {
-                    showOptions[header.id-1] ? <ShopOptions />  : <></>
+                    showOptions[header.id-1] ? <ShopOptions handleShowOptions={handleShowOptions} id={header.id-1} />  : <></>
                 }
             </div>
         )

@@ -118,6 +118,10 @@
 }
 
 @media only screen and (max-width: 1000px) {
+    .activeOption{
+        border: 1px solid rgba(255,96,8,1)!important;
+        width: 41vw!important;
+    }
     .titleContainer{
         display: none;
     }
@@ -137,7 +141,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 60vw;
+        width: 45vw;
         height: 77vh;
         background-color: white;
         z-index: 10;

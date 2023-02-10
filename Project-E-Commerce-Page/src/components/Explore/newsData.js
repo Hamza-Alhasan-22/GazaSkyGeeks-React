@@ -1,6 +1,6 @@
-import news1 from '../../images/news1.png'
-import news2 from '../../images/news2.png'
-import news3 from '../../images/news3.png'
+import news1 from '../../products/News/news1.png'
+import news2 from '../../products/News/news2.png'
+import news3 from '../../products/News/news3.png'
 
 export const news = [
     {

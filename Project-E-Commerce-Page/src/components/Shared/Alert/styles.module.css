@@ -1,0 +1,10 @@
+.alertContainer{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+}
+.alert{
+    transition: all 3s ease 3s;
+    font-weight: bold;
+    background-color: white;
+}

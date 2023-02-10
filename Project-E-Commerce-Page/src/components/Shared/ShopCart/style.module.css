@@ -31,6 +31,7 @@
     margin-right: 2vw;
     z-index: 3;
     width: 65%;
+    height: 9%;
 }
 
 .cartButton:hover{
@@ -71,5 +72,11 @@
     .cartButton{
         margin-left: 9vw;
         margin-right: 2vw;
+        font-size: 12px;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .cartButton {
+        font-size: 10px;
     }
 }

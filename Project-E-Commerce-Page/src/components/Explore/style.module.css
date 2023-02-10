@@ -147,4 +147,8 @@
     .exploreContainer button {
         width: 34%;
     }
+    .RightArrow,.LeftArrow{
+        height: 70px;
+        width: 45px;
+    }
 }

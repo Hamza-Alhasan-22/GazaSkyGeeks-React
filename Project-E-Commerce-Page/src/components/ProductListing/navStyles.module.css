@@ -82,6 +82,11 @@
     .titleSpan{
         justify-content: center;
     }
+    .optionsSpan{
+        margin-left: 0;
+        padding-left: 0;
+        justify-content: center;
+    }
     .titleSpan h2{
         margin: 0;
         margin-right: 1vw;

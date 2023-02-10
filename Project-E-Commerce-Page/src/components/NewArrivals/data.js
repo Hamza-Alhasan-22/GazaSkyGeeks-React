@@ -22,7 +22,7 @@ export const popUpData = [
       title: 'The Sideswept Dhoti + Bottom Line Grey (Silk)',
       price: 139.90,
       stars: 4.8,
-      description: 'Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere from South Asia to the Horn of Africa and southern Arabian pen… ',
+      description: 'Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere ',
       employment: '54 jobs',
       partnership: 'Randall Armstrong',
       collab: 'Augusta Mendoza'
@@ -37,7 +37,7 @@ export const popUpData = [
       title: 'The Sideswept Dhoti + Bottom Line Grey (Silk)',
       price: 139.90,
       stars: 4.8,
-      description: 'Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere from South Asia to the Horn of Africa and southern Arabian pen… ',
+      description: 'Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere ',
       employment: '54 jobs',
       partnership: 'Randall Armstrong',
       collab: 'Augusta Mendoza'
@@ -52,7 +52,7 @@ export const popUpData = [
       title: 'The Sideswept Dhoti + Bottom Line Grey (Silk)',
       price: 139.90,
       stars: 4.8,
-      description: 'Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere from South Asia to the Horn of Africa and southern Arabian pen… ',
+      description: 'Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere ',
       employment: '54 jobs',
       partnership: 'Randall Armstrong',
       collab: 'Augusta Mendoza'
@@ -67,7 +67,7 @@ export const popUpData = [
       title: 'The Sideswept Dhoti + Bottom Line Grey (Silk)',
       price: 139.90,
       stars: 4.8,
-      description: 'Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere from South Asia to the Horn of Africa and southern Arabian pen… ',
+      description: 'Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere ',
       employment: '54 jobs',
       partnership: 'Randall Armstrong',
       collab: 'Augusta Mendoza'
@@ -82,7 +82,7 @@ export const popUpData = [
       title: 'The Sideswept Dhoti + Bottom Line Grey (Silk)',
       price: 139.90,
       stars: 4.8,
-      description: 'Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere from South Asia to the Horn of Africa and southern Arabian pen… ',
+      description: 'Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere ',
       employment: '54 jobs',
       partnership: 'Randall Armstrong',
       collab: 'Augusta Mendoza'
@@ -97,7 +97,7 @@ export const popUpData = [
       title: 'The Sideswept Dhoti + Bottom Line Grey (Silk)',
       price: 139.90,
       stars: 4.8,
-      description: 'Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere from South Asia to the Horn of Africa and southern Arabian pen… ',
+      description: 'Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere ',
       employment: '54 jobs',
       partnership: 'Randall Armstrong',
       collab: 'Augusta Mendoza'
@@ -112,7 +112,7 @@ export const popUpData = [
       title: 'The Sideswept Dhoti + Bottom Line Grey (Silk)',
       price: 139.90,
       stars: 4.8,
-      description: 'Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere from South Asia to the Horn of Africa and southern Arabian pen… ',
+      description: 'Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere ',
       employment: '54 jobs',
       partnership: 'Randall Armstrong',
       collab: 'Augusta Mendoza'
@@ -127,7 +127,7 @@ export const popUpData = [
       title: 'The Sideswept Dhoti + Bottom Line Grey (Silk)',
       price: 139.90,
       stars: 4.8,
-      description: 'Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere from South Asia to the Horn of Africa and southern Arabian pen… ',
+      description: 'Inspired by the continuous length of the lunghi or sarong seen in hot climates everywhere ',
       employment: '54 jobs',
       partnership: 'Randall Armstrong',
       collab: 'Augusta Mendoza'

@@ -32,6 +32,11 @@
     margin: 0;
 }
 
+.title:hover{
+    color: rgb(255, 96, 8, 1);
+    cursor: pointer;
+}
+
 .options {
     display: flex;
     flex-direction: column;
@@ -92,7 +97,7 @@
 }
 
 @media only screen and (max-width: 1000px) {
-    .container{
+    /* .container{
         position: static;
         flex-direction: column;
         overflow: scroll;
@@ -102,6 +107,19 @@
         width: 100%;
         box-shadow: none;
         border-bottom: 1px solid gray;
+    } */
+    .container{
+        position: absolute;
+        flex-direction: column;
+        right: 45vw;
+        margin-top: 0;
+        box-shadow: none;
+        padding: 0;
+        left: auto;
+        height: 50vh;
+        width: 45vw;
+        align-items: center;
+        border: 1px solid rgba(255,96,8,1);
     }
     .column {
         margin-top: 0;

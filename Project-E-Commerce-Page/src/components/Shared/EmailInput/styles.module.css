@@ -1,0 +1,42 @@
+.container{
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.container input{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container span{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.container p{
+    position: absolute;
+    bottom: 85%;
+    right: 0;
+    font-size: 0.5em !important;
+    letter-spacing: 1px !important;
+    display: flex;
+    justify-content: center;
+    color: red !important;
+    margin: 0;
+    padding: 0;
+}
+
+.invalid {
+    border: 1px solid red !important;
+}
+
+@media only screen and (max-width: 321px) {
+    .container p{
+        right: 0;
+    }
+}
