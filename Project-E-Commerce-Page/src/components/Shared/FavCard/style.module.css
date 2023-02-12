@@ -202,3 +202,33 @@
 .invalid {
     border: 1px solid red !important;
 }
+@media only screen and (max-width: 700px) {
+    .total span{
+        width: 80%;
+    }
+    .checkOut{
+        width: 30%;
+    }
+    .tdItem{
+        margin-left: 2vw;
+        width: 30vw;
+    }
+    .quantity{
+        width: 18vw;
+    }
+    .tdTotal{
+        width: 20vw;
+        margin-right: 2vw;
+    }
+    .item h2{
+        font-size: 0.8em;
+    }
+    .container{
+        max-height: 90vh;
+        top: 0;
+    }
+    .couponPopup button{
+        width: 45%;
+        font-size: 0.7em;
+    }
+}

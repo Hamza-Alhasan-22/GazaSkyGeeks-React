@@ -15,13 +15,19 @@ const usePopOut = ({ props }) => {
         }, 3000);
         setC(quantity);
         let ary = [...cardsArry];
-        ary.push({
-            id: props.id,
-            title: props.title,
-            price: parseFloat(props.data.price.slice(1)),
-            image: props.sideImgs,
-            quantity: quantity,
-        });
+        let foundProduct = ary.find(item=>item.id===props.id);
+        if(foundProduct === undefined){
+            ary.push({
+                id: props.id,
+                title: props.title,
+                price: parseFloat(props.data.price.slice(1)),
+                image: props.sideImgs,
+                quantity: quantity,
+            });
+        }
+        else{
+            foundProduct.quantity+=quantity;
+        }
         setCardsArry(ary);
         setClose(false);
     }

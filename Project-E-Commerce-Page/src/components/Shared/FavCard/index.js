@@ -21,16 +21,11 @@ function FavCard({state}) {
     const [isModalOpen, setisModalOpen] = useState(false);
     const [discount, setDiscount] = state;
     const [error, setError] = useState(null);
-    const handleCouponInput = (event)=>{
-        setCouponInput(event.target.value);
-    }
-    const openModal = () => {
-        setisModalOpen(true);
-    }
-
-    const closeModal = () => {
-        setisModalOpen(false);
-    }
+    useEffect(() => {
+        let arry = [...cardsArry];
+        arry.map((item,index)=>item.quantity=quantity[index]);
+        setCardsArry(arry);
+      }, [quantity]);
     useEffect(() => {
         if (isModalOpen) {
           document.body.style.overflow = 'hidden';
@@ -41,6 +36,16 @@ function FavCard({state}) {
           document.body.style.overflow = 'visible';
         };
       }, [isModalOpen]);
+    const handleCouponInput = (event)=>{
+        setCouponInput(event.target.value);
+    }
+    const openModal = () => {
+        setisModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setisModalOpen(false);
+    }
     const handleQuantity = (check, ind) => {
         let ary = [...quantity];
         check === '+' ? ary[ind] = ary[ind] + 1 :
@@ -48,11 +53,6 @@ function FavCard({state}) {
                 ary[ind] = ary[ind] - 1;
         setQuantity(ary);
     };
-    useEffect(() => {
-        let arry = [...cardsArry];
-        arry.map((item,index)=>item.quantity=quantity[index]);
-        setCardsArry(arry);
-      }, [quantity]);
     const totalPrice = () => {
         let sum = 0;
         cardsArry.map((item, index) => {
