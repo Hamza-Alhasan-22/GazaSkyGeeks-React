@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { NavBar } from '../../../App.js'
 
 const usePopOut = ({ props }) => {
     const { cards, closeState, favList } = useContext(NavBar);
     const [cardsArry, setCardsArry] = cards;
-    const [close, setClose] = closeState;
+    const setClose = closeState[1];//const [close, setClose] = closeState;
     const [favArryProducts, setFavArryProducts] = favList;
     const [alertBags, setAlertBags] = useState(false);
     const [alertFavs, setAlertFavs] = useState(false);
@@ -33,7 +33,7 @@ const usePopOut = ({ props }) => {
         setC(quantity);
         setClose(false);
         const ary3 = [...favArryProducts];
-        if (ary3.find(item => item.id === props.id) == undefined) {
+        if (ary3.find(item => item.id === props.id) === undefined) {
             ary3.push({
                 id: props.id,
                 title: props.title,
@@ -47,8 +47,8 @@ const usePopOut = ({ props }) => {
 
     const [quantity, setQuantity] = useState(1);
     const handleQuantity = (check) => {
-        check == '+' ? setQuantity(quantity + 1) :
-            quantity == 1 && check == '-' ? setQuantity(1) :
+        check === '+' ? setQuantity(quantity + 1) :
+            quantity === 1 && check === '-' ? setQuantity(1) :
                 setQuantity(quantity - 1);
     };
 
@@ -76,7 +76,6 @@ const usePopOut = ({ props }) => {
     const handleClicked = () => {
         setClicked(!clicked);
     };
-    console.log({ cardsArry });
     return {
         handleClicked,
         handleMainImage,

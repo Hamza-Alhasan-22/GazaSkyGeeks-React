@@ -23,18 +23,30 @@ const Modal = ({ childComponent, onClose, onOpen, isOpen }) => (
 function BagCard(props) {
     const { cards, closeState, favList } = useContext(NavBar);
     const [favArryProducts, setFavArryProducts] = favList;
-    const [close, setClose] = closeState;
+    const setClose = closeState[1];//const [close, setClose] = closeState;
     const [cardsArry, setCardsArry] = cards;
+    const [isModalOpen, setisModalOpen] = useState(false);
+    useEffect(() => {
+        if (isModalOpen) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = 'visible';
+        }
+        return () => {
+          document.body.style.overflow = 'visible';
+        };
+      }, [isModalOpen]);
     const deleteItem = (indexForRemoval) => {
-        let ary2 = [...favArryProducts];
+        let ary2 = JSON.parse(JSON.stringify(favArryProducts));
         ary2.splice(indexForRemoval, 1);
         setFavArryProducts(ary2);
     }
     const moveToBag = (stateID) => {
+        let arry1;
         if(stateID==='all'){
-        let arry1 = [...cardsArry];
+        arry1 = [...cardsArry];
         favArryProducts.map((item, index) => {
-            arry1.find(dataObj => dataObj.id === item.id) == undefined ?
+            arry1.find(dataObj => dataObj.id === item.id) === undefined ?
                 arry1.push({
                     id: item.id,
                     title: item.title,
@@ -44,16 +56,15 @@ function BagCard(props) {
                 }) : arry1.find(dataObj => dataObj.id === item.id).quantity += 1
             return true
         })
-        setCardsArry(arry1);
         setFavArryProducts([]);
         }
         else{//Inserting the id of the item
             let saveIndex;
-            let arry1 = [...cardsArry];
+            arry1 = JSON.parse(JSON.stringify(cardsArry));
             favArryProducts.map((item, index) => {
                 if(item.id===stateID){
                 saveIndex = index;
-                arry1.find(dataObj => dataObj.id === item.id) == undefined ?
+                arry1.find(dataObj => dataObj.id === item.id) === undefined ?
                     arry1.push({
                         id: item.id,
                         title: item.title,
@@ -63,10 +74,11 @@ function BagCard(props) {
                     }) : arry1.find(dataObj => dataObj.id === item.id).quantity += 1
                 return true
                 }
+                else return true
             })
-            setCardsArry(arry1);
             deleteItem(saveIndex);
         }
+        setCardsArry(arry1);
     }
     return (
         <div className={styles.container}>
@@ -79,7 +91,7 @@ function BagCard(props) {
                 {
                     favArryProducts.map((item, index) => {
                     return (
-                        WithItem(item,index, deleteItem, moveToBag)
+                        WithItem(item,index, deleteItem, moveToBag, isModalOpen, setisModalOpen)
                     )
                     })
                 }
@@ -89,19 +101,7 @@ function BagCard(props) {
     );
 }
 
-function WithItem(item,index, deleteItem, moveToBag) {
-    const [isModalOpen, setisModalOpen] = useState(false);
-    useEffect(() => {
-        if (isModalOpen) {
-          document.body.style.overflow = 'hidden';
-        } else {
-          document.body.style.overflow = 'visible';
-        }
-        return () => {
-          document.body.style.overflow = 'visible';
-        };
-      }, [isModalOpen]);
-
+function WithItem(item,index, deleteItem, moveToBag, isModalOpen, setisModalOpen) {
     const openModal = () => {
         setisModalOpen(true);
     }
@@ -110,7 +110,7 @@ function WithItem(item,index, deleteItem, moveToBag) {
         setisModalOpen(false);
     }
     return (
-        <div className={styles.cart}>
+        <div key={index} className={styles.cart}>
             <img src={item.image[0]} alt={'cart image ' + item.id} />
             <span className={styles.cartData}>
                 <span className={styles.cartDiscription}>

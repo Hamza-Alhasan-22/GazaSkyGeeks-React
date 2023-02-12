@@ -12,9 +12,9 @@ function ShopOptions({ handleShowOptions, id }) {
     return (
         <div className={styles.container}>
             {
-                globalData.map(item => {
+                globalData.map((item,index) => {
                     return (
-                        column(item, handleShowOptions, id)
+                        column(item, handleShowOptions, id, index)
                     )
                 })
             }
@@ -22,10 +22,12 @@ function ShopOptions({ handleShowOptions, id }) {
     );
 }
 
-const column = (data, handleShowOptions, id) => {
+const column = (data, handleShowOptions, id, indexMain) => {
     const { goToProductsPage, goToTypeFilter } = useContext(NavBar);
-    const [pageId, setPageId] = goToProductsPage;
-    const [typeFilter, setTypeFilter] = goToTypeFilter;
+    //const [pageId, setPageId] = goToProductsPage;
+    const setPageId = goToProductsPage[1];
+    //const [typeFilter, setTypeFilter] = goToTypeFilter;
+    const setTypeFilter = goToTypeFilter[1];
     const arrow = '>';
     const { title, options } = data;
     const [isClicked, setIsClicked] = useState(data.options.map(i => false));
@@ -46,7 +48,7 @@ const column = (data, handleShowOptions, id) => {
         paddingBottom: '5%',
     }
     return (
-        <div className={styles.column}>
+        <div key={indexMain} className={styles.column}>
             <Link to="/products" style={{ textDecoration: 'none' }} onClick={() => {
                 setPageId(productPageInfo.find(info => info.title.toLowerCase() === title.toLowerCase()).id);
                 handleShowOptions(id);
@@ -56,7 +58,7 @@ const column = (data, handleShowOptions, id) => {
             {
                 options.map((i, index) => {
                     return (
-                        <div className={styles.options}>
+                        <div key={index} className={styles.options}>
                             <span className={styles.labelSpan} onClick={() => handleIsClicked(index)}>
                                 <p style={isClicked[index] ? arrowStyle : arrowStyle1}>{arrow}</p>
                                 <Link to="/products" style={{ textDecoration: 'none' }} onClick={() => {

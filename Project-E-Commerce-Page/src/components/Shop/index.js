@@ -12,7 +12,7 @@ function Shop(props) {
                  {
                     shopOptions.map((item,index)=>{
                         return(
-                            <ShopCart {...item}/>
+                            <ShopCart key={index} {...item}/>
                         )
                     })
                  }

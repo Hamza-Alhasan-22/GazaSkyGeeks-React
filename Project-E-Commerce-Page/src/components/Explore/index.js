@@ -5,9 +5,9 @@ import SectionTitle from '../Shared/SectionTitle';
 import {news} from './newsData.js'
 
 function Explore(props) {
-    const newsComponent = news.map(item => {
+    const newsComponent = news.map((item, index) => {
         return (
-            <News date={item.date} title={item.title}>
+            <News key={index} date={item.date} title={item.title}>
                 <div className={styles.newsBody}>
                     {item.hasData ? <p>{item.data}</p> : <></>}
                     {item.hasImage ? <img src={item.image} alt={'news ' + item.id} /> : <></>}
@@ -20,7 +20,7 @@ function Explore(props) {
         setIsShown(
             isShown.map((item, i) => {
                 return (
-                    i == index ? item = true : item = false
+                    i === index ? item = true : item = false
                 )
             })
         )
@@ -74,8 +74,8 @@ function Explore(props) {
                     {
                         newsComponent.map((item, i) => {
                             return (
-                                windowSize.innerWidth > 1000 && i != 0 ? item :
-                                    i == 0 || !isShown[i] ? <></> : item
+                                windowSize.innerWidth > 1000 && i !== 0 ? item :
+                                    i === 0 || !isShown[i] ? null : item
                             )
                         })
                     }

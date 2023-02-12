@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React from 'react';
 import styles from '../App.module.css'
 
 const About = React.lazy(()=>import('../components/About'));

@@ -8,7 +8,8 @@ const NavBar = (props) => {
     const [typeFilter, setTypeFilter] = goToTypeFilter;
 
     const { handleSetProducts1, saveProducts, handleLabel, pageState } = props;
-    const [pageId, setPageId] = pageState;
+    //const [pageId, setPageId] = pageState;
+    const setPageId = pageState[1];
     const items = navTitles;
     const arrow = '>';
     const [isClicked, setIsClicked] = useState(items.map(i => { return (false) }));
@@ -26,7 +27,7 @@ const NavBar = (props) => {
     }
     const initialType = ()=>{
         const i = saveProducts.indexOf(saveProducts.find(item=>item.find(types=>types.type.toLowerCase()===typeFilter.toLowerCase())));
-        if(typeFilter != ''){
+        if(typeFilter !== ''){
             handleSetProducts1(findType(typeFilter, i));
             handleLabel(capitalizeFirstLetter(typeFilter.toLowerCase()));
             setTypeFilter('');

@@ -20,7 +20,7 @@ const Slider = () => {
     const mystyle2 = {
         paddingTop: '126px',
         backgroundImage: `url(${slider2})`,
-        backgroundSize: '100%',
+        // backgroundSize: '100%',
         backgroundSize: 'cover',
         transition: '1s'
         

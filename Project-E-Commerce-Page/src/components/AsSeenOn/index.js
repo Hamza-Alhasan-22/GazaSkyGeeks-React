@@ -8,7 +8,7 @@ function AsSeenOn(props) {
         <div className={styles.AsSeenOnContainer}>
             <SectionTitle title='As Seen On' />
             <div className={styles.bitmapImg}>
-                <img src={photo} alt='bitmap photo' />
+                <img src={photo} alt='bitmap background' />
             </div>
         </div>
     );

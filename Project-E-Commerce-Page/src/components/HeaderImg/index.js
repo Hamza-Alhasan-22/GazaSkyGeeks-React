@@ -7,7 +7,7 @@ function HeaderImg(props) {
         <div className={styles.container}>
             <span className={styles.header}><h1>{title}</h1></span>
             <span><p>{description}</p></span>
-            <img src={img} alt='header image'/>
+            <img src={img} alt='header background'/>
         </div>
     );
 }

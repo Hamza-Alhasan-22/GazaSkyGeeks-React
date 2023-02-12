@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './style.module.css'
 import Card from '../Shared/Card';
 import { AiOutlineReload } from 'react-icons/ai';
@@ -11,17 +11,17 @@ import NavBar from './navBar.js';
 
 function sortCards(arrayInput, value, numOfShowedProduct) {
   function sortTypes(arrayProducts) {
-    if (value == 1) {
+    if (value === 1) {
       const myData = [].concat(arrayProducts)
         .sort((a, b) => a.description > b.description ? 1 : -1)
       return myData
     }
-    else if (value == 2) {
+    else if (value === 2) {
       const getValue = ({ price }) => +price.slice(1) || 0;
       arrayProducts.sort((a, b) => getValue(a) - getValue(b));
       return arrayProducts
     }
-    else if (value == 3) {
+    else if (value === 3) {
       const getValue = ({ price }) => +price.slice(1) || 0;
       arrayProducts.sort((a, b) => getValue(b) - getValue(a));
       return arrayProducts
@@ -49,7 +49,7 @@ function sortCards(arrayInput, value, numOfShowedProduct) {
 function ProductListing({ pageState }) {
   const [pageId, setPageId] = pageState;
   const saveProducts = [...products];
-  const [selected, setSelected] = useState(selected)
+  const [selected, setSelected] = useState(null);
   const [products1, setProducts1] = useState(saveProducts[pageId]);
   const handleSetProducts1 = (aryT) => {
     setProducts1([...aryT]);
@@ -74,7 +74,7 @@ function ProductListing({ pageState }) {
     setLabel(string)
   }
   const title = () => {
-    return label != '' ? <p>{productPageInfo[pageId].title} <BsArrowRight /> {label}</p> : <p>{productPageInfo[pageId].title}</p>;
+    return label !== '' ? <p>{productPageInfo[pageId].title} <BsArrowRight /> {label}</p> : <p>{productPageInfo[pageId].title}</p>;
   }
 
   const [numOfShowedProduct, setNumOfShowedProduct] = useState(6);
@@ -82,6 +82,7 @@ function ProductListing({ pageState }) {
     let counter = 0;
     products1.map((types, key) => {
       counter = counter + types.typeProducts.length
+      return true
     });
     return counter;
   }
@@ -136,7 +137,7 @@ function ProductListing({ pageState }) {
               )
             })}
           </div>
-          {numOfShowedProduct == getLength() ? <></> : <button className={styles.loading} onClick={() => handleNumOfShowedProduct()}><AiOutlineReload /> LOADING</button>}
+          {numOfShowedProduct === getLength() ? <></> : <button className={styles.loading} onClick={() => handleNumOfShowedProduct()}><AiOutlineReload /> LOADING</button>}
         </div>
       </div>
     </div>
