@@ -44,8 +44,9 @@
     line-height: 20px;
     text-transform: uppercase;
     margin-top: 5%;
-    width: 15%;
     align-self: center;
+    width: 20%;
+    height: 40px;
 }
 
 .newsBody img {
@@ -150,5 +151,11 @@
     .RightArrow,.LeftArrow{
         height: 70px;
         width: 45px;
+    }
+}
+
+@media only screen and (max-width: 550px){
+    .exploreContainer button{
+        width: 55%;
     }
 }

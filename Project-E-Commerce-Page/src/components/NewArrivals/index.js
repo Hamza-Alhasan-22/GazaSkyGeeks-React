@@ -2,11 +2,9 @@ import React from 'react';
 import styles from './style.module.css'
 import Card from '../Shared/Card';
 import SectionTitle from '../Shared/SectionTitle';
-//import { arrivals, popUpData } from './data';
 import { products, popUpData } from '../ProductListing/data.js'
 
 function NewArrivals(props) {
-    //const numOfShowedItems = 8;
     let counter = 0;
     return (
         <div className={styles.container}>

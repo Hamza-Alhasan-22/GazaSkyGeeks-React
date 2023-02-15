@@ -15,7 +15,7 @@ function Explore(props) {
             </News>
         )
     });
-    const [isShown, setIsShown] = useState([true, false, false, false, false]);
+    const [isShown, setIsShown] = useState([true,...[...Array(news.length-1).keys()].map(() => false)]);
     const handleIsShown = (index) => {
         setIsShown(
             isShown.map((item, i) => {
@@ -53,12 +53,12 @@ function Explore(props) {
         <div className={styles.exploreContainer}>
             <SectionTitle title='Explore' />
             <div className={styles.exploreBody}>
-                <div className={`${styles.LeftArrow} ${styles.arrowHover} ${styles.mobileMode}`} onClick={() => {handleInd(false);handleIsShown(itemIndex(ind))}}>
+                <div className={`${styles.LeftArrow} ${styles.arrowHover} ${styles.mobileMode}`} onClick={() => {handleInd(false);handleIsShown(itemIndex(ind-1))}}>
                     <div className={`${styles.arrow} ${styles.left}`}>
                     </div>
                 </div>
 
-                <div className={`${styles.RightArrow} ${styles.arrowHover} ${styles.mobileMode}`} onClick={() => {handleInd(true);handleIsShown(itemIndex(ind))}}>
+                <div className={`${styles.RightArrow} ${styles.arrowHover} ${styles.mobileMode}`} onClick={() => {handleInd(true);handleIsShown(itemIndex(ind+1))}}>
                     <div className={`${styles.arrow} ${styles.right}`}>
                     </div>
                 </div>

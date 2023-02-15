@@ -6,7 +6,7 @@ import {shopOptions} from './shopData.js'
 
 function Shop(props) {
     return (
-        <div className={styles.shopContainer}>
+        <div id='shopID' className={styles.shopContainer}>
             <SectionTitle title='Shop'/>
             <div className={styles.shopCarts}>
                  {

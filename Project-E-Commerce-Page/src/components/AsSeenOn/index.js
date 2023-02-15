@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './style.module.css'
 import SectionTitle from '../Shared/SectionTitle';
-import photo from '../../images/bitmap.png'
+import photo from '../../products/Logos/bitmap.png'
 
 function AsSeenOn(props) {
     return (

@@ -458,7 +458,7 @@ export const products = [
       ]
     }
   ],
-  [
+  [//Others
     {
       type: 'Others',
       typeProducts: []
@@ -1218,7 +1218,6 @@ export const optionsSort = [
     label: "Name",
     value: "1",
   },
-
   {
     label: "Price: low->high",
     value: "2",

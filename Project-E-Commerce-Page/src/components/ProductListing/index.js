@@ -3,81 +3,76 @@ import styles from './style.module.css'
 import Card from '../Shared/Card';
 import { AiOutlineReload } from 'react-icons/ai';
 import { BsArrowRight } from 'react-icons/bs';
-//import { Outlet, Link } from "react-router-dom";
-//import Sidebar from './dropdown';
 import { products, optionsSort, productPageInfo, popUpData } from "./data"
 import NavBar from './navBar.js';
-// import { popUpData } from '../NewArrivals/data.js'
 
-function sortCards(arrayInput, value, numOfShowedProduct) {
-  function sortTypes(arrayProducts) {
-    if (value === 1) {
-      const myData = [].concat(arrayProducts)
-        .sort((a, b) => a.description > b.description ? 1 : -1)
-      return myData
-    }
-    else if (value === 2) {
-      const getValue = ({ price }) => +price.slice(1) || 0;
-      arrayProducts.sort((a, b) => getValue(a) - getValue(b));
-      return arrayProducts
-    }
-    else if (value === 3) {
-      const getValue = ({ price }) => +price.slice(1) || 0;
-      arrayProducts.sort((a, b) => getValue(b) - getValue(a));
-      return arrayProducts
-    }
+function sortCards(arrayInput, value, numOfShowedProducts) {
+  if (value === '1') {
+    // let ary = [];
+    // arrayInput.map(productType => { ary = [...ary, ...productType.typeProducts] });
+    // return ary.slice(0, numOfShowedProducts).sort((a, b) => a.description.localeCompare(b.description))
+    const sortedProducts = arrayInput.map(productType => {
+      return {
+        ...productType,
+        typeProducts: productType.typeProducts.slice(0, numOfShowedProducts).sort((a, b) => a.description.localeCompare(b.description))
+      }
+    });
+    return sortedProducts
   }
-  function popElements(popArray){
-    while(popArray.length > 0) {
-      popArray.pop();
-    }
+  else if (value === '2') {
+    const sortedProducts = arrayInput.map(productType => {
+      return {
+        ...productType,
+        typeProducts: productType.typeProducts.slice(0, numOfShowedProducts).sort((a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1)))
+      }
+    });
+    return sortedProducts
   }
-  let sortedArray = JSON.parse(JSON.stringify(arrayInput));//Deep Copy
-  arrayInput.map((item, index) => {
-    popElements(sortedArray[index].typeProducts);
-    item.typeProducts.slice(0, numOfShowedProduct).map(item2 => {
-      return (
-        sortedArray[index].typeProducts.push(item2)
-      )
-    })
-    sortedArray[index].typeProducts = [...sortTypes(sortedArray[index].typeProducts)];
-    return true
-  });
-  return sortedArray;
+  else if (value === '3') {
+    //else{
+    const sortedProducts = arrayInput.map(productType => {
+      return {
+        ...productType,
+        typeProducts: productType.typeProducts.slice(0, numOfShowedProducts).sort((a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1)))
+      }
+    });
+    return sortedProducts
+  }
+  else return arrayInput
 }
 
 function ProductListing({ pageState }) {
   const [pageId, setPageId] = pageState;
-  const saveProducts = [...products];
-  const [selected, setSelected] = useState(null);
+  //const saveProducts = [...products];
+  const saveProducts = JSON.parse(JSON.stringify(products));//Deep Copy
+  const [selected, setSelected] = useState('defult');
   const [products1, setProducts1] = useState(saveProducts[pageId]);
+  const [numOfShowedProduct, setNumOfShowedProduct] = useState(6);
+  const [activeButton, setActiveButton] = useState([...Array(4).keys()].map(() => false));
+  const [label, setLabel] = useState('');
   const handleSetProducts1 = (aryT) => {
     setProducts1([...aryT]);
   }
   const handleChanges = (arrayOfProducts, valueSelected) => {
-    setProducts1(sortCards(arrayOfProducts, valueSelected, numOfShowedProduct));
+    handleSetProducts1(sortCards(arrayOfProducts, valueSelected, numOfShowedProduct));
   }
   const resetFunction = () => {
     setProducts1(saveProducts[pageId]);
-    setSelected('5');
+    setSelected('default');
     setLabel('');
 
   }
-  const [activeButton, setActiveButton] = useState([...Array(4).keys()].map(() => false));
   const handleActiveButton = (index) => {
     const ary = [...Array(4).keys()].map(() => false);
     ary[index] = true;
     setActiveButton(ary);
   }
-  const [label, setLabel] = useState('');
   const handleLabel = (string) => {
     setLabel(string)
   }
   const title = () => {
     return label !== '' ? <p>{productPageInfo[pageId].title} <BsArrowRight /> {label}</p> : <p>{productPageInfo[pageId].title}</p>;
   }
-
-  const [numOfShowedProduct, setNumOfShowedProduct] = useState(6);
   const getLength = () => {
     let counter = 0;
     products1.map((types, key) => {
@@ -96,10 +91,9 @@ function ProductListing({ pageState }) {
         <span className={styles.sortSpan}>
           <p>Sort By</p>
           <select id="sort" value={selected} onChange={(e) => { setSelected(e.target.value); handleChanges(products1, e.target.value) }}>
-            <option value="5" disabled selected>{'-- Select --'}</option>
-
-            {optionsSort.map((option) => (
-              <option value={option.value}>{option.label}</option>
+            <option value="default" disabled defaultValue>{'-- Select --'}</option>
+            {optionsSort.map((option, indexOption) => (
+              <option key={indexOption} value={option.value}>{option.label}</option>
             ))}
           </select>
         </span>
@@ -117,7 +111,7 @@ function ProductListing({ pageState }) {
               <span className={styles.buttons}>
                 {
                   activeButton.map((item, ind) => {
-                    return (<button className={item ? styles.activeButtonStyle : styles.notActiveButtonStyle}
+                    return (<button key={ind} className={item ? styles.activeButtonStyle : styles.notActiveButtonStyle}
                       onClick={() => handleActiveButton(ind)}>{ind + 1}</button>)
                   })
                 }
@@ -128,14 +122,16 @@ function ProductListing({ pageState }) {
         </div>
         <div className={styles.right}>
           <div className={styles.gridContainer}>
-            {products1.map((types, key) => {
-              return (types.typeProducts.slice(0, numOfShowedProduct).map(item => {
-                return (
-                  <Card cardData={item} popupData={popUpData.find(dataObj => dataObj.id === item.id)} />
+            {
+              products1.map((types, key) => {
+                return (types.typeProducts.slice(0, numOfShowedProduct).map(item => {
+                  return (
+                    <Card key={item.id} cardData={item} popupData={popUpData.find(dataObj => dataObj.id === item.id)} />
+                  )
+                })
                 )
               })
-              )
-            })}
+            }
           </div>
           {numOfShowedProduct === getLength() ? <></> : <button className={styles.loading} onClick={() => handleNumOfShowedProduct()}><AiOutlineReload /> LOADING</button>}
         </div>

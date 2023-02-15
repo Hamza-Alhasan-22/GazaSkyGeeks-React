@@ -9,6 +9,7 @@
     flex-direction: column;
     border-bottom: 1px dotted gray;
     max-height: 80vh;
+    border: 1px solid gray;
 }
 .closeList{
     position: absolute;
