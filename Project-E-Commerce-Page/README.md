@@ -47,7 +47,7 @@ npm start --openssl-legacy-provider
   <img src="https://github.com/Hamza-Alhasan-22/GazaSkyGeeks-React/blob/master/Project-E-Commerce-Page/app%20screenshots/FullPage2.png" width="50%"/>
 </div>
 
-#- Filters:
+# -Filters:
 <div id="header" align="center">
   <img src="https://github.com/Hamza-Alhasan-22/GazaSkyGeeks-React/blob/master/Project-E-Commerce-Page/app%20screenshots/Filter.png" width="50%"/>
   <img src="https://github.com/Hamza-Alhasan-22/GazaSkyGeeks-React/blob/master/Project-E-Commerce-Page/app%20screenshots/Filter2.png" width="50%"/>
