@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import './style.css'
 import { FaTimes } from 'react-icons/fa';
-import { BsQuestionSquare } from 'react-icons/bs'
+//import { BsQuestionSquare } from 'react-icons/bs'
 import Alert from '@mui/material/Alert';
 import usePopOut from './usePopOut';
 
@@ -40,7 +40,7 @@ function PopOut(props) {
                     <div className='pop-out-left'>
                         {
                             sideImgs.map((item, i) => {
-                                return (<img src={item} alt={'pop up img ' + i} onClick={() => handleMainImage(i)} />)
+                                return (<img key={i} src={item} alt={'pop up img ' + i} onClick={() => handleMainImage(i)} />)
                             })
                             //onClick={()=>handleMainImg(item)}
                         }
@@ -77,9 +77,9 @@ function PopOut(props) {
                             <p className='p1'>SIZE</p>
                             <div>
                                 <span className='size-buttons'>
-                                    {sizeButton.map(item => {
+                                    {sizeButton.map((item,index) => {
                                         return (
-                                            <button onClick={() => handleSizeDiscription(item - 1)}>{item}</button>
+                                            <button key={index} onClick={() => handleSizeDiscription(item - 1)}>{item}</button>
                                         )
                                     })}
                                 </span>
@@ -97,7 +97,7 @@ function PopOut(props) {
                                 </span>
                                 <button className='add-to-cart' onClick={() => handleNumOfBags()}>Add to cart</button>
                                 <span className='wishlist-span'>
-                                    <BsQuestionSquare />
+                                    {/* <BsQuestionSquare /> */}
                                     <button className='add-to-wishlist' onClick={() => handleNumOfFavs()}>Add to wishlist</button>
                                 </span>
                             </div>

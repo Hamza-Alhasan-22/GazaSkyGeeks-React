@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import styles from './shop.module.css'
-//import globalData from './data.js'
 import { navTitles, productPageInfo } from '../../ProductListing/data';
 import { Link } from "react-router-dom";
 import { NavBar } from '../../../App';
+import { IoIosArrowUp } from 'react-icons/io';
 
 const globalData = JSON.parse(JSON.stringify(navTitles));
 globalData[3].title = 'Other';
@@ -12,9 +12,9 @@ function ShopOptions({ handleShowOptions, id }) {
     return (
         <div className={styles.container}>
             {
-                globalData.map(item => {
+                globalData.map((item,index) => {
                     return (
-                        column(item, handleShowOptions, id)
+                        column(item, handleShowOptions, id, index)
                     )
                 })
             }
@@ -22,31 +22,13 @@ function ShopOptions({ handleShowOptions, id }) {
     );
 }
 
-const column = (data, handleShowOptions, id) => {
+const column = (data, handleShowOptions, id, indexMain) => {
     const { goToProductsPage, goToTypeFilter } = useContext(NavBar);
-    const [pageId, setPageId] = goToProductsPage;
-    const [typeFilter, setTypeFilter] = goToTypeFilter;
-    const arrow = '>';
+    const setPageId = goToProductsPage[1];
+    const setTypeFilter = goToTypeFilter[1];
     const { title, options } = data;
-    const [isClicked, setIsClicked] = useState(data.options.map(i => false));
-    const handleIsClicked = (index) => {
-        let ary = [...isClicked];
-        ary = ary.map((i, ind) => ind === index ? i = !i : i = false)
-        setIsClicked(ary);
-    }
-    const arrowStyle = {
-        transform: 'rotate(90deg)',
-        margin: '0',
-        marginRight: '5%',
-        paddingBottom: '5%',
-    }
-    const arrowStyle1 = {
-        margin: '0',
-        marginRight: '5%',
-        paddingBottom: '5%',
-    }
     return (
-        <div className={styles.column}>
+        <div key={indexMain} className={styles.column}>
             <Link to="/products" style={{ textDecoration: 'none' }} onClick={() => {
                 setPageId(productPageInfo.find(info => info.title.toLowerCase() === title.toLowerCase()).id);
                 handleShowOptions(id);
@@ -56,9 +38,9 @@ const column = (data, handleShowOptions, id) => {
             {
                 options.map((i, index) => {
                     return (
-                        <div className={styles.options}>
-                            <span className={styles.labelSpan} onClick={() => handleIsClicked(index)}>
-                                <p style={isClicked[index] ? arrowStyle : arrowStyle1}>{arrow}</p>
+                        <div key={index} className={styles.options}>
+                            <span className={styles.labelSpan}>
+                                <IoIosArrowUp size={15} style={{transform:'rotate(90deg)',}} />
                                 <Link to="/products" style={{ textDecoration: 'none' }} onClick={() => {
                                     setPageId(productPageInfo.find(info => info.title.toLowerCase() === title.toLowerCase()).id);
                                     handleShowOptions(id);
@@ -67,19 +49,6 @@ const column = (data, handleShowOptions, id) => {
                                     <p className={styles.label}>{i.label}</p>
                                 </Link>
                             </span>
-                            {
-                                // isClicked[index] ?
-                                //     <span className={styles.typesSpan}>
-                                //         {
-                                //             i.types.map(j => {
-                                //                 return (
-                                //                     <p className={styles.type}>{j}</p>
-                                //                 )
-                                //             })
-                                //         }
-                                //     </span>
-                                //     : <></>
-                            }
                         </div>
                     )
                 })

@@ -9,9 +9,9 @@ function Videos() {
             <SectionTitle title='Recommended Videos'/>
             <div className={styles.videos}>
                 {
-                    videos.map(item=>{
+                    videos.map((item, index)=>{
                         return(
-                            <Video {...item}/>
+                            <Video key={index} {...item}/>
                         )
                     })
                 }

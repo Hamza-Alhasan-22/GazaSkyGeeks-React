@@ -5,9 +5,9 @@ import SectionTitle from '../Shared/SectionTitle';
 import {news} from './newsData.js'
 
 function Explore(props) {
-    const newsComponent = news.map(item => {
+    const newsComponent = news.map((item, index) => {
         return (
-            <News date={item.date} title={item.title}>
+            <News key={index} date={item.date} title={item.title}>
                 <div className={styles.newsBody}>
                     {item.hasData ? <p>{item.data}</p> : <></>}
                     {item.hasImage ? <img src={item.image} alt={'news ' + item.id} /> : <></>}
@@ -15,12 +15,12 @@ function Explore(props) {
             </News>
         )
     });
-    const [isShown, setIsShown] = useState([true, false, false, false, false]);
+    const [isShown, setIsShown] = useState([true,...[...Array(news.length-1).keys()].map(() => false)]);
     const handleIsShown = (index) => {
         setIsShown(
             isShown.map((item, i) => {
                 return (
-                    i == index ? item = true : item = false
+                    i === index ? item = true : item = false
                 )
             })
         )
@@ -53,12 +53,12 @@ function Explore(props) {
         <div className={styles.exploreContainer}>
             <SectionTitle title='Explore' />
             <div className={styles.exploreBody}>
-                <div className={`${styles.LeftArrow} ${styles.arrowHover} ${styles.mobileMode}`} onClick={() => {handleInd(false);handleIsShown(itemIndex(ind))}}>
+                <div className={`${styles.LeftArrow} ${styles.arrowHover} ${styles.mobileMode}`} onClick={() => {handleInd(false);handleIsShown(itemIndex(ind-1))}}>
                     <div className={`${styles.arrow} ${styles.left}`}>
                     </div>
                 </div>
 
-                <div className={`${styles.RightArrow} ${styles.arrowHover} ${styles.mobileMode}`} onClick={() => {handleInd(true);handleIsShown(itemIndex(ind))}}>
+                <div className={`${styles.RightArrow} ${styles.arrowHover} ${styles.mobileMode}`} onClick={() => {handleInd(true);handleIsShown(itemIndex(ind+1))}}>
                     <div className={`${styles.arrow} ${styles.right}`}>
                     </div>
                 </div>
@@ -74,8 +74,8 @@ function Explore(props) {
                     {
                         newsComponent.map((item, i) => {
                             return (
-                                windowSize.innerWidth > 1000 && i != 0 ? item :
-                                    i == 0 || !isShown[i] ? <></> : item
+                                windowSize.innerWidth > 1000 && i !== 0 ? item :
+                                    i === 0 || !isShown[i] ? null : item
                             )
                         })
                     }

@@ -31,6 +31,11 @@
     padding-right: 9.8%;
     display: flex;
     align-items: center;
+    text-decoration: none;
+}
+
+#matter:hover{
+    cursor: pointer;
 }
 
 .iconContainer{
@@ -120,7 +125,7 @@
 @media only screen and (max-width: 1000px) {
     .activeOption{
         border: 1px solid rgba(255,96,8,1)!important;
-        width: 41vw!important;
+        /* width: 41vw!important; */
     }
     .titleContainer{
         display: none;
@@ -152,6 +157,9 @@
     .titleButtonTxt{
         display: flex;
         justify-content: center;
+    }
+    .titleButton{
+        width: 41vw;
     }
 }
 

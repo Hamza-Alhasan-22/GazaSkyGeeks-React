@@ -4,7 +4,8 @@ import Alert from '@mui/material/Alert';
 
 function AlertState(props) {
     const { state, numOfSec } = props;
-    const [error, setError] = state;
+    //const [error, setError] = state;
+    const error = state[0];
     const [alertIsShown, setAlertIsShown] = useState(false);
     const alertState = () => {
         if (error == null) {

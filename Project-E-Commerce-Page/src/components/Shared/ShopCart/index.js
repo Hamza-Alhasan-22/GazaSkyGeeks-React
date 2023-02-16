@@ -6,7 +6,8 @@ import {productPageInfo} from '../../ProductListing/data'
 
 function ShopCart(props) {
     const {goToProductsPage} = useContext(NavBar);
-    const [pageId, setPageId] = goToProductsPage;
+    //const [pageId, setPageId] = goToProductsPage;
+    const setPageId = goToProductsPage[1];
     const [isHover, setIsHover] = useState(false);
     const {id, image, description} = props;
     return (

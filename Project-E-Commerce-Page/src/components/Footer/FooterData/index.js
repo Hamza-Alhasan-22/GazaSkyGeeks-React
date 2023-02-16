@@ -8,7 +8,7 @@ function FooterData(props) {
             {
                 props.options.map(item =>{
                     return(
-                        <p>{item}</p>
+                        <p key={item}>{item}</p>
                     )
                 })
             }

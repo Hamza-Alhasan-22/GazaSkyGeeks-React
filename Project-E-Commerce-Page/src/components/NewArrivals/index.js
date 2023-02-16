@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './style.module.css'
 import Card from '../Shared/Card';
 import SectionTitle from '../Shared/SectionTitle';
-//import { arrivals, popUpData } from './data';
 import { products, popUpData } from '../ProductListing/data.js'
 
 function NewArrivals(props) {
-    const numOfShowedItems = 8;
     let counter = 0;
     return (
         <div className={styles.container}>
@@ -19,9 +17,10 @@ function NewArrivals(props) {
                                 if (item.newTag === 'active' && counter < 8) {
                                     counter += 1;
                                     return (
-                                        <Card cardData={item} popupData={popUpData.find(dataObj => dataObj.id === item.id)} />
+                                        <Card key={item.id} cardData={item} popupData={popUpData.find(dataObj => dataObj.id === item.id)} />
                                     )
                                 }
+                                else return true
                             }))
                         })
                     )

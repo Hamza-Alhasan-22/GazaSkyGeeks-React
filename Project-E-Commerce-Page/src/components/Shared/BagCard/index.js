@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef, forwardRef } from 'react';
 import styles from './style.module.css'
 import { NavBar } from '../../../App.js'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
@@ -7,34 +7,69 @@ import Popup from 'reactjs-popup';
 import PopOut from '../PopOut';
 import {popUpData} from '../../ProductListing/data'
 
-//favArryProducts: item :
-//id: props.id,
-//title: props.title,
-//price: props.data.price,
-//image: props.sideImgs,
-
-const Modal = ({ childComponent, onClose, onOpen, isOpen }) => (
-    <Popup
-        modal onClose={onClose} onOpen={onOpen} open={isOpen}>
-        {childComponent}
-    </Popup>
-)
+const Modal = forwardRef(({ childComponent, onClose, onOpen, isOpen }, ref) => {
+    const popupRef = useRef(null);
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (isOpen && popupRef.current && !popupRef.current.contains(event.target)) {
+                onClose();
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [isOpen, onClose]);
+    return (
+        <Popup
+            ref={(node) => {
+                popupRef.current = node && node.contentWrapper;
+                if (ref) {
+                    ref.current = popupRef.current;
+                }
+            }}
+            onClose={onClose}
+            onOpen={onOpen}
+            open={isOpen}
+            closeOnDocumentClick={false}
+            modal
+        >
+            {childComponent}
+        </Popup>
+    );
+});
 
 function BagCard(props) {
     const { cards, closeState, favList } = useContext(NavBar);
     const [favArryProducts, setFavArryProducts] = favList;
-    const [close, setClose] = closeState;
+    const [indexOpened, setIndexOpened] = useState(null);
+    const setClose = closeState[1];
     const [cardsArry, setCardsArry] = cards;
+    const [isModalOpen, setisModalOpen] = useState(false);
+    useEffect(() => {
+        if (isModalOpen) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = 'visible';
+        }
+        return () => {
+          document.body.style.overflow = 'visible';
+        };
+      }, [isModalOpen]);
+    const handleIndex =(id)=>{
+        setIndexOpened(indexOpened===id?null:id);
+    }
     const deleteItem = (indexForRemoval) => {
-        let ary2 = [...favArryProducts];
+        let ary2 = JSON.parse(JSON.stringify(favArryProducts));
         ary2.splice(indexForRemoval, 1);
         setFavArryProducts(ary2);
     }
     const moveToBag = (stateID) => {
+        let arry1;
         if(stateID==='all'){
-        let arry1 = [...cardsArry];
+        arry1 = [...cardsArry];
         favArryProducts.map((item, index) => {
-            arry1.find(dataObj => dataObj.id === item.id) == undefined ?
+            arry1.find(dataObj => dataObj.id === item.id) === undefined ?
                 arry1.push({
                     id: item.id,
                     title: item.title,
@@ -44,16 +79,15 @@ function BagCard(props) {
                 }) : arry1.find(dataObj => dataObj.id === item.id).quantity += 1
             return true
         })
-        setCardsArry(arry1);
         setFavArryProducts([]);
         }
         else{//Inserting the id of the item
             let saveIndex;
-            let arry1 = [...cardsArry];
+            arry1 = JSON.parse(JSON.stringify(cardsArry));
             favArryProducts.map((item, index) => {
                 if(item.id===stateID){
                 saveIndex = index;
-                arry1.find(dataObj => dataObj.id === item.id) == undefined ?
+                arry1.find(dataObj => dataObj.id === item.id) === undefined ?
                     arry1.push({
                         id: item.id,
                         title: item.title,
@@ -63,10 +97,11 @@ function BagCard(props) {
                     }) : arry1.find(dataObj => dataObj.id === item.id).quantity += 1
                 return true
                 }
+                else return true
             })
-            setCardsArry(arry1);
             deleteItem(saveIndex);
         }
+        setCardsArry(arry1);
     }
     return (
         <div className={styles.container}>
@@ -79,7 +114,7 @@ function BagCard(props) {
                 {
                     favArryProducts.map((item, index) => {
                     return (
-                        WithItem(item,index, deleteItem, moveToBag)
+                        <WithItem key={index} item={item} index={index} deleteItem={deleteItem} moveToBag={moveToBag} isModalOpen={isModalOpen} setisModalOpen={setisModalOpen} handleIndex={handleIndex} indexOpened={indexOpened} />
                     )
                     })
                 }
@@ -89,19 +124,7 @@ function BagCard(props) {
     );
 }
 
-function WithItem(item,index, deleteItem, moveToBag) {
-    const [isModalOpen, setisModalOpen] = useState(false);
-    useEffect(() => {
-        if (isModalOpen) {
-          document.body.style.overflow = 'hidden';
-        } else {
-          document.body.style.overflow = 'visible';
-        }
-        return () => {
-          document.body.style.overflow = 'visible';
-        };
-      }, [isModalOpen]);
-
+function WithItem({item,index, deleteItem, moveToBag, isModalOpen, setisModalOpen, handleIndex, indexOpened}) {
     const openModal = () => {
         setisModalOpen(true);
     }
@@ -110,13 +133,14 @@ function WithItem(item,index, deleteItem, moveToBag) {
         setisModalOpen(false);
     }
     return (
-        <div className={styles.cart}>
+        <div key={index} className={styles.cart}>
             <img src={item.image[0]} alt={'cart image ' + item.id} />
             <span className={styles.cartData}>
                 <span className={styles.cartDiscription}>
                     <h2>{item.title}</h2>
                     <p>${item.price.toFixed(2)}</p>
-                    <p className={styles.select} onClick={openModal}>Select to show the details</p>
+                    <p className={styles.select} onClick={()=>{openModal();handleIndex(item.id)}}>
+                        Select to show the details</p>
                 </span>
                 <span className={styles.editSpan}>
                     <button onClick={()=>moveToBag(item.id)}>Move to Bag</button>
@@ -124,9 +148,9 @@ function WithItem(item,index, deleteItem, moveToBag) {
                 </span>
             </span>
             <Modal
-                childComponent={<PopOut {...popUpData.find(itemPop=>itemPop.id===item.id.toString())} onClose={closeModal} />}
+                childComponent={<PopOut {...popUpData.find(itemPop=>itemPop.id===indexOpened)} onClose={closeModal} />}
                 isOpen={isModalOpen}
-                onClose={closeModal}
+                // onClose={closeModal}
                 onOpen={openModal}
             />
         </div>

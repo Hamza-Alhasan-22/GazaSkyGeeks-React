@@ -8,7 +8,8 @@ import ProductListing from '../components/ProductListing';
 import {productPageInfo} from '../components/ProductListing/data.js'
 
 function ProductPage({pageState}) {
-    const [pageId, setPageId] = pageState;
+    //const [pageId, setPageId] = pageState;
+    const pageId = pageState[0];
     useEffect(() => {
         window.scrollTo(
           {

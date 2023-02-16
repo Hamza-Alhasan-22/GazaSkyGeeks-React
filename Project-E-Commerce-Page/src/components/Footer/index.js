@@ -37,7 +37,7 @@ function Footer(props) {
                     {
                         footerdata.map(item => {
                             return (
-                                <FooterData {...item} />
+                                <FooterData key={item.title} {...item} />
                             )
                         })
                     }
